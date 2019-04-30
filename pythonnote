@@ -1,0 +1,15 @@
+python3 bitcoinlib 安裝方法
+sudo apt install build-essential python-dev python3-dev libgmp3-dev
+sudo apt install libssl-dev
+pip3 install bitcoinlib
+======================================================
+setup script exited with error: command "x86_64-linux-gnu-gcc" failed with exit status 1
+
+https://stackoverflow.com/questions/26053982/setup-script-exited-with-error-command-x86-64-linux-gnu-gcc-failed-with-exit
+
+======================================================
+file open
+https://blog.csdn.net/ztf312/article/details/47259805
+=====================================================
+python3 virtualenv
+https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/365510/
