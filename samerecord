@@ -1,0 +1,77 @@
+mocha and nodejs express chai
+https://groundberry.github.io/development/2016/12/10/testing-express-with-mocha-and-chai.html
+=====================================================
+pkill -f "process name" 好用
+=====================================================
+製作rc.local:
+1.sudo vim /etc/init.d/test.sh 寫個排程
+2.sudo vim /etc/rc.local 將排程寫進去
+note::chmod +x test.sh & rc.local
+ex:
+	#!/bin/sh -e
+	#
+	# rc.local
+	#
+	# This script is executed at the end of each multiuser runlevel.
+	# Make sure that the script will "exit 0" on success or any other
+	# value on error.
+	#
+	# In order to enable or disable this script just change the execution
+	# bits.
+	#
+	# By default this script does nothing.
+
+	#sudo sh /etc/init.d/api32000.sh
+	#sudo sh /etc/init.d/api3206.sh
+	#sudo sh /etc/init.d/api3200.sh
+	#sudo sh /etc/init.d/api3201.sh
+
+	sudo sh /etc/init.d/chainCFP.sh &
+	sudo /etc/init.d/btcssh.sh &
+	sudo sh /etc/init.d/btrTobtc.sh &
+	sudo sh /etc/init.d/cicchainssh.sh &
+
+	sudo sh /etc/init.d/server.sh &
+
+	exit 0
+3.cd /etc/rcS.d && sudo ln -s ../rc.local S60rc.local 製作軟連結，S60代表優先權，數字越大越低
+=======================================================
+python nodejs 前端會有跨域問題
+記得加上 
+nodejs express:
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
+    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+python:
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Access-Control-Allow-Headers", "x-requested-with")
+        self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
+=======================================================
+eth節點
+https://github.com/ethereum/go-ethereum/wiki/Installation-Instructions-for-Ubuntu
+
+--datadir top
+
+/home/administrator/node/go-ethereum/build/bin/geth --datadir top console
+ 
+ geth --datadir top console ''啟動已太node
+ 
+ 
+ btc節點 ubuntu
+ wget https://bitcoincore.org/bin/bitcoin-core-0.16.2/bitcoin-0.16.2-x86_64-linux-gnu.tar.gz
+ tar -zxvf bitcoin-0.16.2-x86_64-linux-gnu.tar.gz 
+ 
+ 進去bitcoin-0.16.2/bin  輸入./bitcoind啟動
+ ctrl +c 關閉執行，進去/home/username/.bitcoin
+ 建立測試檔案bitcoin.conf，裡面填
+ ''''''
+ daemon=1
+server=1
+rpcuser=hello
+rpcpassword=12345678
+rpcport=9501
+rpcallowip=0.0.0.0/0
+ ''''''
+ 輸入./bitcoind啟動，會跳出Bitcoin server starting後轉往背景程式
+ 輸入測試curl --user hello --data-binary '{"jsonrpc":"2.0","id":"curltext","method":"getnetworkinfo","params":[]}' -H 'content-type:application/json' http://電腦IP
+ 連外部：bitcoind -rpcuser=xxx -rpcpassword=xxx -txindex
