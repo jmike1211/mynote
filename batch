@@ -1,0 +1,8 @@
+while :
+do
+  sleep 10000
+  ProcNumberusdt=`ps -ef |grep 'chainAPI.py' | grep -v 'grep' | wc -l`
+  if [ $ProcNumberusdt -eq 0 ];then
+      python3 chainAPI.py
+  fi
+done
