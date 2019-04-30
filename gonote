@@ -1,0 +1,19 @@
+https://blog.csdn.net/a41888313/article/details/79939211
+https://studygolang.com/articles/9052
+http://fuxiaohei.me/2016/9/20/go-and-http-server.html
+============================================================
+mongodb RESTfulAPI
+https://hackernoon.com/build-restful-api-in-go-and-mongodb-5e7f2ec4be94
+============================================================
+查詢type
+https://www.golangnote.com/topic/49.html
+============================================================
+go 安裝
+sudo curl -O https://storage.googleapis.com/golang/go1.12.2.linux-amd64.tar.gz
+sudo tar -xvf go1.11.1.linux-amd64.tar.gz
+sudo mv go /usr/local
+
+vim ~/.bashrc
+export GOROOT=/usr/local/go/
+export PATH=$PATH:$GOROOT/bin
+export GOPATH=$HOME/go
