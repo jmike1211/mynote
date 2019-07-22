@@ -13,3 +13,7 @@ https://blog.csdn.net/ztf312/article/details/47259805
 =====================================================
 python3 virtualenv
 https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/365510/
+
+======================================================
+python3 http.server & pm2 & port 80
+authbind --deep pm2 start python3 -- -m http.server 80
