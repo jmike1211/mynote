@@ -1,3 +1,6 @@
+python 升級 3.7
+https://medium.com/k2shouai/ubuntu-16-04-%E6%9B%B4%E6%96%B0-python-3-7-f08cee97a64b
+======================================================
 python3 bitcoinlib 安裝方法
 sudo apt install build-essential python-dev python3-dev libgmp3-dev
 sudo apt install libssl-dev
