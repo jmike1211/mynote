@@ -1,0 +1,18 @@
+parity install
+
+Linux:
+
+Download the latest release from the link above
+https://github.com/openethereum/openethereum/releases
+
+Make the parity file executable by running chmod u+x parity
+Launch Parity Ethereum with your favourite flags: ./parity --chain dev --jsonrpc-apis personal
+=====================================================
+poa-ethereum-chain
+
+https://medium.com/taipei-ethereum-meetup/%E4%BD%BF%E7%94%A8parity%E5%BB%BA%E7%AB%8Bproof-of-authority-poa-ethereum-chain-c5c1cdd0f21a
+
+
+
+44AFFq5kSiGBoZ4NMDwYtN18obc8AemS33DBLWs3H7otXft3XjrpDtQGv7SqSsaBYBb98uNbr2VBBEt7f2wfn3RVGQBEP3A
+etnjwQwwEY65dhSMfKto64GgY7j7q2RUSZP1r8rXZ615J4egUC596R4crvZ5woWWTWBUztnKMUudzQ22E37LHiV48XWeJDFkkY
