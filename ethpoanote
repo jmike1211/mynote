@@ -1,0 +1,108 @@
+explorer : https://kknews.cc/zh-tw/code/yz6rjrj.html
+===================================================
+ngnix https://www.cnblogs.com/52fhy/p/10166352.html
+======================================================
+https://kknews.cc/code/ppvnyj2.html (https://kknews.cc/code/ppvnyj2.html)
+
+
+投票節點稱為Sealer。
+
+geth --datadir node1/ account new 
+geth --datadir node2/ account new 
+
+echo '0x2F4cA42cF46114983b889fb07ea3491Dd2225016' >> accounts.txt 
+echo '0xF4590FB876909b8f8de6089A6077067Db1DBcAC8' >> accounts.txt 
+
+用puppeth 創建genesis.json 
+
+chain/network ID:   1515 
+
+1.4 初始化節點
+$ geth --datadir node1/ init genesis.json
+$ geth --datadir node2/ init genesis.json
+
+1.5 創建一個bootnode
+啟動節點的唯一目的是幫助節點發現彼此（記住，以太坊區塊鏈是對等網絡）。節點可以具有動態IP，關閉，然後再打開。bootnode通常在靜態IP上運行，因此就像一個pub，節點知道它們會找到它們的配對。
+
+
+原文網址：https://kknews.cc/code/ppvnyj2.html (https://kknews.cc/code/ppvnyj2.html)
+
+
+1.6 產生boot key 
+            bootnode -genkey boot.key 
+1.7 啟動節點 
+            bootnode -nodekey boot.key 
+
+
+
+$ tree -L 2 
+. 
+├── accounts.txt 
+├── boot.key 
+├── genesis.json 
+├── node1 
+│   ├── geth 
+│   └── keystore 
+├── node2 
+│   ├── geth 
+│   └── keystore 
+└── ttchain-harmony.json 
+
+
+
+https://kknews.cc/code/qg9n4x8.html (https://kknews.cc/code/qg9n4x8.html)
+
+啟動bootnode服務 
+
+bootnode port : 30310
+node1 port: 30311
+
+bootnode -nodekey boot.key -verbosity 9 -addr :30310
+
+enode://06d6df546377c787179c0363fc6ededd5a7c4e0d8a23aa877035d1a2ec981a8a1344f1d3cb23772d5cd8fd72f0c9f2b9a0e1726f6719325d295b58bbe960a2f2@127.0.0.1:0?discport=30310
+啟動節點1 
+
+geth --datadir node1/ --syncmode 'full' --port 30311 --rpc --rpcaddr 'localhost' --rpcport 8501 --rpcapi 'personal,eth,net,web3,txpool,miner' --bootnodes 'enode://06d6df546377c787179c0363fc6ededd5a7c4e0d8a23aa877035d1a2ec981a8a1344f1d3cb23772d5cd8fd72f0c9f2b9a0e1726f6719325d295b58bbe960a2f2@127.0.0.1:0?discport=30310' --networkid 1515 --gasprice '0' -unlock '0x2F4cA42cF46114983b889fb07ea3491Dd2225016' --allow-insecure-unlock (解決Account unlock with HTTP access is forbidden) 
+--password node1/password.txt --mine(即投票/密封以獲得權利證明) 
+geth --datadir node1/ --syncmode 'full' --port 30311 --rpc --rpcaddr 'localhost' --rpcport 8501 --rpcapi 'personal,eth,net,web3,txpool,miner' --bootnodes 'enode://06d6df546377c787179c0363fc6ededd5a7c4e0d8a23aa877035d1a2ec981a8a1344f1d3cb23772d5cd8fd72f0c9f2b9a0e1726f6719325d295b58bbe960a2f2@127.0.0.1:0?discport=30310' --networkid 1515 --gasprice '0' -unlock '0x2F4cA42cF46114983b889fb07ea3491Dd2225016' --allow-insecure-unlock --password node1/password.txt --mine --nousb
+
+
+
+啟動節點2 
+
+geth --datadir node2/ --syncmode 'full' --port 30312 --rpc --rpcaddr 'localhost' --rpcport 8502 --rpcapi 'personal,eth,net,web3,txpool,miner' --bootnodes 'enode://06d6df546377c787179c0363fc6ededd5a7c4e0d8a23aa877035d1a2ec981a8a1344f1d3cb23772d5cd8fd72f0c9f2b9a0e1726f6719325d295b58bbe960a2f2@127.0.0.1:0?discport=30310' --networkid 1515 --gasprice '0' -unlock '0xF4590FB876909b8f8de6089A6077067Db1DBcAC8' --allow-insecure-unlock (解決Account unlock with HTTP access is forbidden) 
+--password node2/password.txt --mine(即投票/密封以獲得權利證明) 
+
+geth --datadir node2/ --syncmode 'full' --port 30312 --rpc --rpcaddr 'localhost' --rpcport 8502 --rpcapi 'personal,eth,net,web3,txpool,miner' --bootnodes 'enode://06d6df546377c787179c0363fc6ededd5a7c4e0d8a23aa877035d1a2ec981a8a1344f1d3cb23772d5cd8fd72f0c9f2b9a0e1726f6719325d295b58bbe960a2f2@127.0.0.1:0?discport=30310' --networkid 1515 --gasprice '0' -unlock '0xF4590FB876909b8f8de6089A6077067Db1DBcAC8' --allow-insecure-unlock --password node2/password.txt --mine --nousb
+
+
+外網新增一般節點:
+步驟同上
+啟動後須找前幾個node的encode
+
+geth --datadir node3/ --rpccorsdomain '*' --syncmode 'full' --port 30311 --rpc --rpcaddr '0.0.0.0' --rpcport 8545 --rpcapi 'personal,eth,net,web3,txpool' --bootnodes 'enode://b56b287ffc0c021f62a1b7dd78d89cd29c587e7313be39551e1596cb677ee3531e9d929f15d73a408fa74bc4b1d3788ed5e9d09b70e2fcccf50751431fc5214c@13.115.168.4:30312' --networkid 1500 --gasprice '0' --allow-insecure-unlock --nousb console
+
+enode://b56b287ffc0c021f62a1b7dd78d89cd29c587e7313be39551e1596cb677ee3531e9d929f15d73a408fa74bc4b1d3788ed5e9d09b70e2fcccf50751431fc5214c@127.0.0.1:30312
+
+外網新增授權節點
+1.
+在node3 geth console 輸入
+admin.addPeer("enode://105a34aa34dfc0eb1a5bb8ac79d647733857796345e6d3045e86f7b6aafb450cff81020c344990bfc8c4ad0052441a45a50ba0c930edb0da528e77330b7ef6ec@127.0.0.1:30304")
+回傳true
+2.回到連接的node(此處範例連接node2)，進入geth console
+輸入clique.propose("0xFA41F4Ea2b69A61a9ccBAB29f50f137b62c4B350",true)
+重啟一次node3
+geth --datadir node3/ --rpccorsdomain '*' --syncmode 'full' --port 30311 --rpc --rpcaddr '0.0.0.0' --rpcport 8545 --rpcapi 'personal,eth,net,web3,txpool,miner' --bootnodes 'enode://b56b287ffc0c021f62a1b7dd78d89cd29c587e7313be39551e1596cb677ee3531e9d929f15d73a408fa74bc4b1d3788ed5e9d09b70e2fcccf50751431fc5214c@13.115.168.4:30312' --networkid 1500 --gasprice '0' --unlock '0xFA41F4Ea2b69A61a9ccBAB29f50f137b62c4B350' --allow-insecure-unlock --password node3/password.txt --mine --nousb console
+
+
+IPC連接node1: 
+
+geth attach node1/geth.ipc 
+RPC連接node1:  
+
+geth attach ‘http://localhost:8501'
+
+
+===============================================================================
+dex 測試流程
+先用主帳號將錢打給relay地址以及其他兩個測試地址
