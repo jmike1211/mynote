@@ -1,3 +1,17 @@
+java改版本
+https://www.gomcu.com/linux-java/
+Redhat5.3系統上原先安裝了java 1.4.2版本，重新下載了最新的1.7版本，但是安裝後使用java –version命令查看，仍然是1.4.2版本。
+使用以下方法可以完成升級：
+
+首先完成java 1.7版本的安裝
+使用which java命令查看java環境變量指向地址/usr/bin/java
+刪除/usr/bin/java目錄rm –rf /usr/bin/java
+使用命令連接新的java目錄ln -s /usr/java/jdk 1.7 .0/bin/java /usr/bin/java
+繼續使用java-version命令查看版本已經升級為1.7
+=======================================================
+no make
+https://blog.csdn.net/fenglibing/article/details/7096556
+======================================================= 
 mocha and nodejs express chai
 https://groundberry.github.io/development/2016/12/10/testing-express-with-mocha-and-chai.html
 =====================================================
