@@ -1,6 +1,26 @@
+
+bluebird
+https://itbilu.com/nodejs/npm/VJHw6ScNb.html#api-promise.any
+https://github.com/request/request-promise/issues/97
+https://medium.com/@kimz/%E5%A5%BD%E7%94%A8%E7%9A%84-promise-bluebird-%E8%88%87%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9-fcaca0d5424c
+===================================
+node send mail smtp
+https://ithelp.ithome.com.tw/articles/10160766
+https://jeremysu0131.github.io/Node-js-Nodemailer-%E8%A8%AD%E5%AE%9A-SMTP/
+===================================
 JSON 局部修改int to string
 https://stackoverflow.com/questions/7389598/convert-all-the-integer-value-to-string-in-json
 
 ===================================
 NVM install
 https://medium.com/@wrre/%E5%AE%89%E8%A3%9Dnvm%E4%BE%86%E5%AE%89%E8%A3%9Dnode-js-9b4a9514552
+===================================
+pm2 use root
+
+sudo apt-get install authbind
+sudo touch /etc/authbind/byport/80
+sudo chmod 755 /etc/authbind/byport/80
+authbind --deep pm2 update
+
+https://stackoverflow.com/questions/35105100/start-app-as-root-with-pm2/42234711
+====================================
